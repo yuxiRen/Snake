@@ -16,6 +16,5 @@ class Food {
     this.element.style.left = left + "px";
   }
 }
-const food = new Food();
-food.changeCoordinate();
+
 export default Food;
