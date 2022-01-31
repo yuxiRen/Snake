@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.ts",
-
+  mode: "development",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
@@ -42,7 +42,26 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        use: ["style-loader", "css-loader", "less-loader"],
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    "postcss-preset-env",
+                    {
+                      browsers: "last 2 versions",
+                    },
+                  ],
+                ],
+              },
+            },
+          },
+          "less-loader",
+        ],
       },
     ],
   },
