@@ -1,2 +1,3 @@
+import Food from "./moduls/Food";
 import "./style/index.less";
-console.log(123);
+const food = new Food();
