@@ -19,6 +19,33 @@
     width: 304px;
     height: 304px;
     border: 2px solid black;
+    position: relative;
+    #snake {
+      & > div {
+        width: 10px;
+        height: 10px;
+        background-color: #000;
+        border: 1px solid @bg-color;
+        position: absolute;
+      }
+    }
+    #food {
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      left: 100px;
+      right: 100px;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      align-content: space-between;
+      transform: rotate(45deg);
+      & > div {
+        width: 4px;
+        height: 4px;
+        background-color: #000;
+      }
+    }
   }
   #score-panel {
     width: 300px;
