@@ -37,6 +37,7 @@ class GameControl {
         X += 10;
         break;
     }
+    this.checkGetFood(X, Y);
     try {
       this.snake.X = X;
       this.snake.Y = Y;
@@ -48,6 +49,13 @@ class GameControl {
 
     this.isLive &&
       setTimeout(this.run.bind(this), 300 - (this.scorePanel.level - 1) * 30);
+  }
+  checkGetFood(X: number, Y: number) {
+    if (X === this.food.X && Y === this.food.Y) {
+      this.food.changeCoordinate();
+      this.scorePanel.addScore();
+      this.snake.increaseBody();
+    }
   }
 }
 export default GameControl;
