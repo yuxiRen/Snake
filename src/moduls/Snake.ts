@@ -14,9 +14,21 @@ class Snake {
     return this.head.offsetTop;
   }
   set X(value: number) {
+    if (value === this.X) {
+      return;
+    }
+    if (value < 0 || value > 290) {
+      throw new Error();
+    }
     this.head.style.left = value + "px";
   }
   set Y(value: number) {
+    if (value === this.Y) {
+      return;
+    }
+    if (value < 0 || value > 290) {
+      throw new Error();
+    }
     this.head.style.top = value + "px";
   }
   increaseBody() {
