@@ -22,6 +22,7 @@ class Snake {
     }
     this.moveBody();
     this.head.style.left = value + "px";
+    this.checkEatSelf();
   }
   set Y(value: number) {
     if (value === this.Y) {
@@ -32,6 +33,7 @@ class Snake {
     }
     this.moveBody();
     this.head.style.top = value + "px";
+    this.checkEatSelf();
   }
   increaseBody() {
     this.element.insertAdjacentHTML("beforeend", "<div></div>");
@@ -42,6 +44,16 @@ class Snake {
       let prevY = (this.bodies[i - 1] as HTMLElement).offsetTop;
       (this.bodies[i] as HTMLElement).style.left = prevX + "px";
       (this.bodies[i] as HTMLElement).style.top = prevY + "px";
+    }
+  }
+  checkEatSelf() {
+    for (let i = 1; i < this.bodies.length; i++) {
+      if (
+        this.X == (this.bodies[i] as HTMLElement).offsetLeft &&
+        this.Y == (this.bodies[i] as HTMLElement).offsetTop
+      ) {
+        throw new Error();
+      }
     }
   }
 }
